@@ -1,3 +1,4 @@
+from distutils.log import info
 import pytube as pt, os
 from curses import BUTTON1_CLICKED, window
 from tkinter import *
@@ -26,7 +27,9 @@ def single():
 app = Tk()
 app.title("Downloader")
 app.configure(background=blk)
-photo = PhotoImage(file = "Icon.png")
+
+
+photo = ImageTk.PhotoImage(Image.open('Icon.png'))
 app.iconphoto(False, photo)
 
 
@@ -69,6 +72,7 @@ link.pack(side=LEFT, anchor=NW, padx=10, pady=20,)
 canvas = Canvas(app, bg = blk, width=256, height=256, highlightthickness=0, borderwidth=0)
 canvas.place(x = 850, y = 45)
 
+
 binactive = Image.open("button2.png")
 bactive = Image.open("button1.png")
 
@@ -94,7 +98,7 @@ def Download(self):
             
         except:
             Play = "Single"
-            Down.config(text="Your'e link doesn't work")
+            Down.config(text="Your link doesn't work")
 
     
 
@@ -136,17 +140,16 @@ button.bind("<Button-1>", Download)
 
 
 Text2 = Label(app,
-    text = "Directory for\n your music\n(It will make a fold)",
+    text = "Directory for\n your music\n(It will make\n a folder)",
     font=("helvetica", 18),
-    bg= blk, fg="white", bd = 0).place(x=20, y= 150)
+    bg= blk, fg="white", bd = 0).place(x=20, y= 150),
 # Text2.pack(anchor=SW, fill='both')
-
-
 
 
 Path = Text(width=67, height=1)
 Path.place(x = 180, y = 180)
-
+print("test")
+print(Path.get(1.0, END))
 
 
 
